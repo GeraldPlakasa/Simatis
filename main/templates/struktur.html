@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content_header %}
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Kestrukturan</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="/main">Home</a></li>
+          <li class="breadcrumb-item active">struktur</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+{% endblock content_header %}
+
+{% block content_main %}
+<section class="content">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <h3 class="card-title">King / Queen        
+         </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <p>si A</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+      <div class="card m-2" style="width: 18rem;">
+        <div class="card-header">
+          <h3 class="card-title">Panglima        
+         </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <p>si B</p>
+        </div>
+      </div>
+      <div class="card m-2" style="width: 18rem;">
+        <div class="card-header">
+          <h3 class="card-title">Panglima        
+         </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <p>si C</p>
+        </div>
+      </div>
+      <div class="card m-2" style="width: 18rem;">
+        <div class="card-header">
+          <h3 class="card-title">Panglima        
+         </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <p>si D</p>
+        </div>
+      </div>
+      <div class="card m-2" style="width: 18rem;">
+        <div class="card-header">
+          <h3 class="card-title">Panglima        
+         </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <p>si E</p>
+        </div>
+      </div>
+      <div class="card m-2" style="width: 18rem;">
+        <div class="card-header">
+          <h3 class="card-title">Panglima        
+         </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <p>si F</p>
+        </div>
+      </div>
+    </div>
+    
+    <!--Carousel Wrapper-->
+<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+  <!--Controls-->
+  <button class="carousel-control-prev btn btn-light btn-corousel" type="button" data-target="#multi-item-example" data-slide="prev">
+      <i class="fas fa-chevron-left" style="color:black !important;"></i>
+  </button>
+  <button class="carousel-control-next btn btn-light btn-corousel" type="button" data-target="#multi-item-example" data-slide="next">
+    <i class="fas fa-chevron-right" style="color:black !important;"></i>
+  </button>
+  <!--/.Controls-->
+
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+    <li data-target="#multi-item-example" data-slide-to="1"></li>
+    
+  </ol>
+  <!--/.Indicators-->
+
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+
+    <!--First slide-->
+    <div class="carousel-item active">
+
+      <div class="col-md-3" style="float:left">
+       <div class="card mb-2">
+          <img class="card-img-top"
+            src="{% static 'img/tes.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <a class="btn btn-primary">Button</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3" style="float:left">
+        <div class="card mb-2">
+          <img class="card-img-top"
+            src="{% static 'img/tes.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <a class="btn btn-primary">Button</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3" style="float:left">
+        <div class="card mb-2">
+          <img class="card-img-top"
+            src="{% static 'img/tes.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <a class="btn btn-primary">Button</a>
+          </div>
+        </div>
+      </div>
+      
+       <div class="col-md-3" style="float:left">
+       <div class="card mb-2">
+          <img class="card-img-top"
+            src="{% static 'img/tes.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <a class="btn btn-primary">Button</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!--/.First slide-->
+
+    <!--Second slide-->
+    <div class="carousel-item">
+
+      <div class="col-md-3" style="float:left">
+        <div class="card mb-2">
+          <img class="card-img-top"
+            src="{% static 'img/tes.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <a class="btn btn-primary">Button</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3" style="float:left">
+        <div class="card mb-2">
+          <img class="card-img-top"
+            src="{% static 'img/tes.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <a class="btn btn-primary">Button</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3" style="float:left">
+        <div class="card mb-2">
+          <img class="card-img-top"
+            src="{% static 'img/tes.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <a class="btn btn-primary">Button</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-3" style="float:left">
+        <div class="card mb-2">
+          <img class="card-img-top"
+            src="{% static 'img/tes.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <a class="btn btn-primary">Button</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!--/.Second slide-->
+
+   
+
+  </div>
+  <!--/.Slides-->
+
+</div>
+<!--/.Carousel Wrapper-->
+    
+  </div>
+</div>
+{% endblock content_main %}

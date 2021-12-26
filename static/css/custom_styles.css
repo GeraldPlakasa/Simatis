@@ -100,3 +100,11 @@ a{
     font-family: 'Ubuntu', sans-serif;
     background-color: var(--col_kuning);
 }
+
+.btn-corousel {
+    height: 40px;
+        /*background-color: transparent !important;*/
+    border: none;
+    top: 50%;
+
+    }
