@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+</style>
+</head>
+<body onload="startGame()">
+<script>
+
+var myGamePiece;
+var karakter = []
+
+function startGame() {
+	for (var i = 0; i < 10; i++) {
+		ukuran = Math.floor((Math.random() * 15) + 5)
+		x = Math.random() * 480*3
+		y = Math.random() * 270*3
+		speed = Math.random() * 5
+		angle = Math.random() * 5
+		karakter[i] = new component(ukuran, ukuran, "blue", x, y, speed, angle);
+	}
+    // myGamePiece = new component(15, 15, "blue", 225, 225, 0.5);
+    // myGamePiece2 = new component(10, 10, "red", 225, 225, 1);
+    myGameArea.start();
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 480*3;
+        this.canvas.height = 270*3;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.frameNo = 0;
+        this.interval = setInterval(updateGameArea, 10);
+    },
+    stop : function() {
+        clearInterval(this.interval);
+    },    
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+
+function component(width, height, color, x, y, speed, angle, type) {
+
+    this.type = type;
+    this.width = width;
+    this.height = height;
+    this.speed = speed;
+    this.angle = angle;
+    this.moveAngle = 0.5;
+    this.x = x;
+    this.y = y;    
+    this.update = function() {
+        ctx = myGameArea.context;
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.fillStyle = color;
+        ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height);        
+        ctx.restore();    
+    }
+    this.newPos = function() {
+    	this.angle += this.moveAngle * Math.PI / 180;
+        if (this.x >= 480*3) {
+        	this.x -= this.speed * Math.sin(this.angle);
+        } else {
+        	this.x += this.speed * Math.sin(this.angle);
+        }
+
+        if (this.y >= 270*3) {
+        	this.y -= this.speed * Math.sin(this.angle);
+        } else {
+        	this.y += this.speed * Math.sin(this.angle);
+        }
+
+    }
+}
+
+function updateGameArea() {
+    myGameArea.clear();
+    for (var i = 0; i < 10; i++) {
+		karakter[i].newPos();
+		karakter[i].update();
+	}
+    // myGamePiece.newPos();
+    // myGamePiece.update();
+    // myGamePiece2.newPos();
+    // myGamePiece2.update();
+}
+
+</script>
+</body>
+</html>
