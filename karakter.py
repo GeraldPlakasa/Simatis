@@ -78,14 +78,15 @@ class Karakter:
         return data
 
     def serang(self, musuh):
-        dmg = self.atk*(100/(100+musuh.defend)) * random.uniform(0.75, 1.25)
-        critical = random.randint(0, 100)
-        miss = random.randint(0, 100)
-        if critical <= 20:
-              dmg *= 2
-        if miss <= 20:
-              dmg *= 0
-        return dmg
+        hit_chance = random.randint(1, 100)
+        if hit_chance <= 20:
+            return 0
+        else:
+            dmg = self.atk * (100 / (100 + musuh.defend)) * random.uniform(0.75, 1.25)
+            critical_chance = random.randint(1, 100)
+            if critical_chance <= 20:
+                dmg *= 2
+            return dmg
 
     def info(self):
         print("Name : "+self.name)

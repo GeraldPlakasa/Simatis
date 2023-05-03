@@ -6,11 +6,7 @@ import pandas as pd
 import numpy as np
 from collections import defaultdict
 import system as systm
-
-day = 1
-month = 1
-year = 1
-day_temp = 1
+import pickle
 
 # def sensor():
 #     global day
@@ -29,38 +25,24 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    karakter_df = systm.load_karakter()
+    return render_template("index.html", enumerate=enumerate, df=karakter_df, systm=systm)
 
 @app.route("/karakter")
 def home_v():
-    global day
-    global day_temp
-    global month
-    day += 1
 
-    karakter_list_df = systm.load_karakter()
-    karakter_list = systm.setKarakterList(karakter_list_df.copy())
+    karakter_df = systm.load_karakter()
+    karakter_list = systm.set_karakter_list(karakter_df.copy())
+    karakter_list_new = systm.daily_system(karakter_df, karakter_list)
 
-    if day >= day_temp:
-        karakter_list = systm.daily(karakter_list)
-        systm.save_karakter(karakter_list)
-        day_temp += 1
-
-    if day > 30:
-        month += 1
-        day = 1
-        day_temp = 1
-
-    print(str(day)+"-"+str(month))
-    
-    return render_template("index_v.html", day=day, karakter_list=karakter_list, enumerate=enumerate)
+    return render_template("index_v.html", day=day, karakter_list=karakter_list_new, enumerate=enumerate)
 
 @app.route("/addpeople")
 def addPeople():
-    karakter_list_df = systm.load_karakter()
-    karakter_list = systm.setKarakterList(karakter_list_df.copy())
+    karakter_df = systm.load_karakter()
+    karakter_list = systm.set_karakter_list(karakter_df.copy())
     keluarga_list = []
-    systm.createPeople(karakter_list, keluarga_list)
+    systm.create_people(karakter_list, keluarga_list)
     print("Add People Success")
 
     return redirect('/karakter')
@@ -69,23 +51,25 @@ def addPeople():
 def setPeople():
     karakter_list = []
     keluarga_list = []
-    systm.createPeople(karakter_list, keluarga_list)
+    systm.create_people(karakter_list, keluarga_list)
     print("Set People Success")
+    systm.reset_time()
+    setKing()
     
     return redirect('/karakter')
 
-@app.route("/setking")
+@app.route("/setKing")
 def setKing():
-    karakter_list_df_temp = systm.load_karakter()
-    karakter_list = systm.setKarakterList(karakter_list_df_temp)
-    karakter_list_df = karakter_list_df_temp.loc[karakter_list_df_temp["role"] == "Fighter"]
-    karakter_list = systm.setking(karakter_list_df_temp, karakter_list_df, karakter_list)
+    karakter_df = systm.load_karakter()
+    karakter_list = systm.set_karakter_list(karakter_df)
+    karakter_df_fighter = karakter_df.loc[karakter_df["role"] == "Fighter"]
+    karakter_list = systm.set_king(karakter_df, karakter_df_fighter, karakter_list)
 
     systm.save_karakter(karakter_list)
+    print("Set King Success")
 
     return redirect('/karakter')
 
 @app.route("/game")
 def game():
-    
     return render_template("game.html")
